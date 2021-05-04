@@ -48,10 +48,13 @@ warnings.filterwarnings('ignore', message='Unverified HTTPS request')
 # *************************************************************************
 TO_PRINT = True
 SLEEP_FOR = 3600    # 1Hr
-PORT = 25
-SMTP_SERVER = None
-SENDER_EMAIL = None
-RECEIVER_EMAIL = None
+PORT = 465
+SMTP_SERVER = "smtp.gmail.com"
+SENDER_EMAIL = None         # "you@gmail.com"
+SENDER_APP_PASSWORD = None  # "exdhohdydfljqqqq"
+# To generate app password of the sender, follow the link below:
+# https://support.google.com/accounts/answer/185833?hl=en
+RECEIVER_EMAIL = None       # ["someone@gmail.com", "anotherone@yahoo.com"]
     
 # Configure logger
 logging.basicConfig(
@@ -83,13 +86,16 @@ def sent_email_notification(message):
     msg = MIMEMultipart('alternative')
     msg['Subject'] = "Covid vaccination centers found for you!"
     msg['From'] = SENDER_EMAIL
-    msg['To'] = RECEIVER_EMAIL
+    msg['To'] = ",".join(RECEIVER_EMAIL)
     part1 = MIMEText(message, 'plain')
     msg.attach(part1)
 
     try:
-        with smtplib.SMTP(SMTP_SERVER, PORT) as server:
+        print("connecting to server")
+        with smtplib.SMTP_SSL(SMTP_SERVER, PORT) as server:
+            print("server connected")
             server.ehlo()
+            server.login(SENDER_EMAIL, SENDER_APP_PASSWORD)
             server.sendmail(SENDER_EMAIL, RECEIVER_EMAIL, msg.as_string())
             server.close()
             myprint('Email sent!')
@@ -275,4 +281,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
