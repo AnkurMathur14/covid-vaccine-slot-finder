@@ -25,10 +25,10 @@ This script monitors available vaccination centers and free slots based on given
     Examples:
 
     python3 vaccine_slot_finder.py -a <your_age> -p <pin_code>
-    python3 vaccine_slot_finder.py -a 30 -p 226003
+    python3 vaccine_slot_finder.py -a 30 -p 123456
     
     python3 vaccine_slot_finder.py -a <your_age> -d <district_id>
-    python3 vaccine_slot_finder.py -a 30 -d 670
+    python3 vaccine_slot_finder.py -a 30 -d 123
     
     To find out your district id, just run:
     python3 vaccine_slot_finder.py -a <your_age>
@@ -39,3 +39,5 @@ This script monitors available vaccination centers and free slots based on given
 Pre-requisites:
 1. pip3 install tabulate
 2. pip3 install requests
+
+Note: You need to generate your(sender) email's app password. Follow this link to do the same https://support.google.com/accounts/answer/185833?hl=en
