@@ -91,9 +91,9 @@ def sent_email_notification(message):
     msg.attach(part1)
 
     try:
-        print("connecting to server")
+        myprint("connecting to server")
         with smtplib.SMTP_SSL(SMTP_SERVER, PORT) as server:
-            print("server connected")
+            myprint("server connected")
             server.ehlo()
             server.login(SENDER_EMAIL, SENDER_APP_PASSWORD)
             server.sendmail(SENDER_EMAIL, RECEIVER_EMAIL, msg.as_string())
