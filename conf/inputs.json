@@ -1,0 +1,7 @@
+{
+    "search_frequency": 3600,
+    "search_for_weeks": 2,
+    "sender_email": "sender@gmail.com",
+    "sender_app_password": "<your_app_pass>",
+    "receivers_email": ["receiver1@gmail.com", "receiver2@yahoo.com"]
+}
