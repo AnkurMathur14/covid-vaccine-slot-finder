@@ -39,6 +39,7 @@ This script monitors available vaccination centers and free slots based on given
 Pre-requisites:
 1. pip3 install tabulate
 2. pip3 install requests
-3. Open the py file and provide your email settings in the global section.
+3. Open input.json file and provide your email settings.
+4. Keep py and input.json at the same location while running the script
 
 Note: You need to generate your(sender) email's app password. Follow this link to do the same https://support.google.com/accounts/answer/185833?hl=en
