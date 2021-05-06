@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 # -------------------------------------------------------------------------------
 # Name:        vaccine_slot_finder
@@ -28,7 +27,6 @@ import warnings
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from six.moves import http_client
 
 try:
     import tabulate
@@ -41,6 +39,13 @@ try:
 except:
     print("Please install 'requests' module first. pip3 install requests")
     sys.exit(1)
+    
+try:
+    from six.moves import http_client
+except:
+    print("Please install 'six' module first. pip3 install six")
+    sys.exit(1)
+    
 
 
 warnings.filterwarnings('ignore', message='Unverified HTTPS request')
@@ -312,16 +317,11 @@ def main():
 
     input_json = load_config_file()
     search_for_weeks = input_json['search_for_weeks']
-    search_frequency = input_json['search_frequency']
     cowin_api_obj = APIBuilder()
     if pincode:
-        while True:
-            get_availability(cowin_api_obj, age, search_for_weeks, pincode, is_pincode=True)
-            time.sleep(search_frequency)
+        get_availability(cowin_api_obj, age, search_for_weeks, pincode, is_pincode=True)
     elif district:
-        while True:
-            get_availability(cowin_api_obj, age, search_for_weeks, district, is_pincode=False)
-            time.sleep(search_frequency)
+        get_availability(cowin_api_obj, age, search_for_weeks, district, is_pincode=False)
     else:
         district_id = select_districts(cowin_api_obj)
 
