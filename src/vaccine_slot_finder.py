@@ -119,7 +119,6 @@ def load_config_file():
     try:
         with open(input_file) as data_file:
             input_json = json.load(data_file)
-            myprint(input_json)
             return input_json
     except Exception as e:
         myprint("Failed to read the config file {0} with exception {1}".format(input_file, str(e)))
