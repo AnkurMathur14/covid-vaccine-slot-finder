@@ -34,12 +34,17 @@ This script monitors available vaccination centers and free slots based on given
     python3 vaccine_slot_finder.py -a <your_age>
     
     To run this in background:
-    nohup python3 vaccine_slot_finder.py -a <your_age> -p <pin_code> -np &
+    Create a cron job-
+    1. crontab -e
+    2. */5 * * * * /home/src/vaccine_slot_finder.py -a 30 -d 123 -np
+    
+    
 
 Pre-requisites:
 1. pip3 install tabulate
 2. pip3 install requests
-3. Open input.json file and provide your email settings.
-4. Keep py and input.json at the same location while running the script
+3. pip3 install six
+4. Open input.json file and provide your email settings.
+5. Keep py file and input.json at the same location while running the script
 
 Note: You need to generate your(sender) email's app password. Follow this link to do the same https://support.google.com/accounts/answer/185833?hl=en
